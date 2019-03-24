@@ -1,0 +1,22 @@
+<form [formGroup]="addToDoForm" (submit)="addNewToDo()">
+  <ul class="form-list">
+    <li class="title">
+      <label for="title">Title (required): </label>
+      <input type="text" 
+             id="title" 
+             formControlName="title" 
+             placeholder="Do Something" 
+             required
+      >
+    </li>
+    <li class="discription">
+      <label for="discription">Discription: </label>
+      <textarea type="text" 
+                id="discription"
+                formControlName="discription" 
+                placeholder="This what you want to do">
+      </textarea>
+    </li>
+  </ul>
+  <button class="button" type="submit" [disabled]="!addToDoForm.valid">Add ToDo</button>
+</form>

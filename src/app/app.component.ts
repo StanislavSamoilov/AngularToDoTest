@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToDoItemsService } from './to-do-items.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angularToDo';
+  title = 'Angular ToDo App';
+  showAddForm = false;
+
+  constructor(private toDoItemsService: ToDoItemsService) { }
+
+  clearList() {
+    this.toDoItemsService.clearList();
+  }
 }

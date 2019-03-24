@@ -1,0 +1,5 @@
+<ul class="list">
+  <li class="item" *ngFor="let singleToDoItem of getToDoItems()">
+    <app-to-do-item [toDoItem]="singleToDoItem"></app-to-do-item>
+  </li>
+</ul>
