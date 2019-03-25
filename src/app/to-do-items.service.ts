@@ -12,7 +12,7 @@ export class ToDoItemsService {
   }
 
   addToDo(newItem: ToDoItem): void {
-    let tempToDoList = this.getToDoList();
+    const tempToDoList = this.getToDoList();
 
     tempToDoList.push(newItem);
     localStorage.setItem('toDoList', JSON.stringify(tempToDoList));

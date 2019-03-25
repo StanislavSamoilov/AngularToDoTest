@@ -14,10 +14,10 @@
 }
 
 .buttons-wrapper {
-  padding: 0 30px;
-  margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 30px;
+  padding: 0 30px;
 }
 
 .button {
@@ -25,6 +25,7 @@
   padding: 8px 16px;
 
   color: rgb(255, 255, 255);
+  
   background-color: rgb(68, 194, 68);
   border: none;
   border-radius: 6px;;

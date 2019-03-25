@@ -1,13 +1,13 @@
 language: node_js
+
 node_js:
-  - "9"
-dist: trusty
-sudo: required
-branches:
-  only:
-  - master
-before_script:
-  - npm install -g @angular/cli
+  - '10.5.0'
+
 script:
-- ng lint
-- ng build --prod --base-href https://stanislavsamoilov.github.io/AngularToDo/
+  - ng build --prod
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: build

@@ -1,6 +1,8 @@
 .item-wrapper {
   position: relative;
-  padding-left: 46px;
+
+  padding: 20px 10px;
+  padding-left: 56px;
 }
 
 .title {
@@ -35,8 +37,8 @@
 
 .label{
   position: absolute;
-  top: 30px;
-  left: 0;
+  top: 50px;
+  left: 10px;
 
   width: 30px;
   height: 30px;
@@ -45,6 +47,15 @@
   border: 1px solid rgb(54, 54, 54);
   border-radius: 50%;
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    border: 2px solid rgb(54, 54, 54);
+  }
+
+  &:active {
+    border: 2px solid rgba(54, 54, 54, 0.5);
+  }
 
   & .checkmark::after {
     display: none;
@@ -80,8 +91,8 @@
 
 .button {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 20px;
+  right: 10px;
   
   width: 20px;
   height: 20px;

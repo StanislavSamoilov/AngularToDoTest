@@ -19,7 +19,7 @@ export class AddToDoComponent {
 
   addNewToDo(): void {
     // how to code-style this construction ?
-    let newToDoItem = new ToDoItem( this.addToDoForm.get('title').value, 
+    const newToDoItem = new ToDoItem( this.addToDoForm.get('title').value, 
                                     this.addToDoForm.get('discription').value, 
                                     new Date(),
                                     false );

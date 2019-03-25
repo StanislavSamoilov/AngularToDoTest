@@ -5,10 +5,8 @@
   <p class="info">
     <span class="date">{{ toDoItem.date | date:'medium' }}</span>
   </p>
-  <label class="label">
-    <span class="visually-hidden">Toggle ToDo status</span>
-    <input class="visually-hidden" 
-           id="status" 
+  <label class="label"><span class="visually-hidden">Toggle ToDo status</span>
+    <input class="visually-hidden"
            type="checkbox" 
            [checked]="toDoItem.state" 
            (click)="toggleToDoStatus()"

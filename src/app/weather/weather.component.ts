@@ -1,20 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-interface weatherData {
-  color?: Object,
-  weather?: Object[],
-  main?: {
-    temp?: string,
-    [propName: string]: any
-  }
-  wind?: {
-    speed?: string,
-    [propName: string]: any
-  }
-  clouds?: Object,
-  name?: string
-  [propName: string]: any
-}
+// import { WeatherService } from '../weather.service';
 
 @Component({
   selector: 'app-weather',
@@ -22,13 +7,16 @@ interface weatherData {
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements OnInit {
-  // not very private...
-  private apiKey = '2ac27ee036aeee78d401fffa925fc3cd'; // 2ac27ee036aeee78d401fffa925fc3cd
-  locationData: weatherData;
+  private apiKey = '2ac27ee036aeee78d401fffa925fc3cd'; // 
+  // weatherData;
+  locationData;
 
-  constructor() { }
+  constructor(
+    // private weatherService: WeatherService
+  ) { }
 
   ngOnInit() {
+    // this.weatherData = this.weatherService.getWeather();
     navigator.geolocation.getCurrentPosition((position): void => {
       fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${this.apiKey}`)
         .then((responce) => {
