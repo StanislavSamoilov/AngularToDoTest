@@ -17,18 +17,23 @@ export class WeatherComponent implements OnInit {
 
   ngOnInit() {
     // this.weatherData = this.weatherService.getWeather();
-    navigator.geolocation.getCurrentPosition((position): void => {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${this.apiKey}`)
-        .then((responce) => {
-          return responce.json();
-        })
-        .then((data) => {
-          this.locationData = data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
+    navigator.geolocation.getCurrentPosition(
+      (position): void => {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${this.apiKey}`)
+          .then((responce) => {
+            return responce.json();
+          })
+          .then((data) => {
+            this.locationData = data;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      (error): void => { 
+        console.log(error) 
+      }
+    );
   }
 
 }
