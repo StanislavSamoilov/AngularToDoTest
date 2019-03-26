@@ -4,7 +4,7 @@ node_js:
   - '10.5.0'
 
 script:
-  - ng build --prod
+  - ng build --prod --base-href "https://stanislavsamoilov.github.io/AngularToDo/"
 
 deploy:
   provider: pages
