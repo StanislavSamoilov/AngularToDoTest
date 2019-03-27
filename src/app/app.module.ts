@@ -11,6 +11,7 @@ import { KelToCelPipe } from './kel-to-cel.pipe';
 import { ToDoItemActiveComponent } from './to-do-list/to-do-item/to-do-item-active/to-do-item-active.component';
 import { ToDoItemPassiveComponent } from './to-do-list/to-do-item/to-do-item-passive/to-do-item-passive.component';
 
+// to-do list to other module
 @NgModule({
   declarations: [
     AppComponent,

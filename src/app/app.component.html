@@ -5,11 +5,10 @@
   </section>
   <section class="to-do container">
     <div class="buttons-wrapper">
-      <button class="button" type="button" (click)="showAddForm = !showAddForm" >Add ToDo</button>
-      <button class="button" type="button" (click)="clearList()" >Clear List</button>
+      <button class="button" type="button" (click)="showAddForm = !showAddForm">Add ToDo</button>
+      <button class="button" type="button" (click)="clearList()">Clear List</button>
     </div>
     <app-add-to-do *ngIf="showAddForm"></app-add-to-do>
     <app-to-do-list></app-to-do-list>
   </section>
 </main>
-

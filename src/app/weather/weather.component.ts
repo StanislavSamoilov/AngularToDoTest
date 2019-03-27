@@ -6,13 +6,13 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.scss']
+  styleUrls: ['./weather.component.scss'],
 })
 export class WeatherComponent implements OnInit, OnDestroy {
   public weatherData: WeatherData;
   private dataSub: Subscription;
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService) {}
 
   ngOnInit() {
     this.dataSub = this.weatherService.getWeather().subscribe(
