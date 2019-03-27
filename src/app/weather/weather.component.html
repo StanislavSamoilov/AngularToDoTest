@@ -1,4 +1,5 @@
-<h2 class="title">Weather now: {{ locationData?.weather[0]?.main }}</h2>
-<p>City: {{ locationData?.name }}</p>
-<p>Wind: {{ locationData?.wind?.speed }} m/s</p>
-<p>Temp: {{ locationData?.main?.temp | kelToCel }} °C</p>
+<div class="weather-wrapper">
+  <h2 class="title">Weather now: {{ weatherData?.weather[0]?.main }}</h2>
+  <span>City: {{ weatherData?.name }}</span>
+  <span>Temp: {{ weatherData?.main?.temp | kelToCel }} °C</span>
+</div>

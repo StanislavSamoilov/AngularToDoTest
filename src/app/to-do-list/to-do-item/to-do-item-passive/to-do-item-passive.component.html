@@ -1,0 +1,25 @@
+<!-- neew two-way data binding for title and description + change data id changed -->
+<div class="item-wrapper">
+  <div class="info-wrapper">
+    <h3 class="title" (click)="sendActiveteEvent()">{{ toDoItem.title }}</h3>
+    <ng-container *ngIf="isOpen">
+      <p class="description" (click)="sendActiveteEvent()">{{ toDoItem.description }}</p>
+      <span class="date">{{ toDoItem.date | date:'short' }}</span>
+    </ng-container>
+  </div>
+  <label class="label" [ngClass]="{ 'checked': toDoItem.state }">
+    <span class="visually-hidden">Toggle ToDo status</span>
+    <input
+      class="visually-hidden"
+      type="checkbox"
+      [checked]="toDoItem.state"
+      (click)="toggleToDoStatus($event)"
+    >
+  </label>
+  <button type="button" class="button-delete" (click)="deleteToDo()">
+    <span class="visually-hidden">Delete ToDo</span>
+  </button>
+  <button type="button" class="button-detail" (click)="isOpen = !isOpen" [ngClass]="{ 'openArrow': isOpen }">
+    <span class="visually-hidden">Show Detail</span>
+  </button>
+</div>

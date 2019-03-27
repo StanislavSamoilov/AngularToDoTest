@@ -1,22 +1,24 @@
-<form [formGroup]="addToDoForm" (submit)="addNewToDo()">
+<form class="form" [formGroup]="toDosForm" (submit)="addNewToDo()">
   <ul class="form-list">
-    <li class="title">
+    <li class="title"
+        [ngClass]="{ 'invalid': isValid() }"
+    >
       <label for="title">Title (required): </label>
-      <input type="text" 
-             id="title" 
-             formControlName="title" 
-             placeholder="Do Something" 
-             required
+      <input type="text"
+              id="title"
+              formControlName="title"
+              placeholder="Do Something"
+              required
       >
     </li>
-    <li class="discription">
-      <label for="discription">Discription: </label>
-      <textarea type="text" 
-                id="discription"
-                formControlName="discription" 
+    <li class="description">
+      <label for="description">Description: </label>
+      <textarea type="text"
+                id="description"
+                formControlName="description"
                 placeholder="This what you want to do">
       </textarea>
     </li>
   </ul>
-  <button class="button" type="submit" [disabled]="!addToDoForm.valid">Add ToDo</button>
+  <button type="submit" class="button" [disabled]="!toDosForm.valid">Add ToDo</button>
 </form>

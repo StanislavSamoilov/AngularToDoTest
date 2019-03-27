@@ -1,5 +1,17 @@
+<h2 class="visually-hidden">ToDo List</h2>
 <ul class="list">
-  <li class="item" *ngFor="let singleToDoItem of getToDoItems()">
-    <app-to-do-item [toDoItem]="singleToDoItem"></app-to-do-item>
+  <li class="item" *ngFor="let singleToDoItem of getToDoItems(); let i = index; trackBy: trackByIndex">
+    <app-to-do-item-passive
+      *ngIf="activeToDo.date !== singleToDoItem.date; else active"
+      (activateToDo)="makeActive($event)"
+      [toDoItem]="singleToDoItem">
+    </app-to-do-item-passive>
+
+    <ng-template #active>
+      <app-to-do-item-active
+        (deactivateToDo)="makePassive()"
+        [toDoItem]="singleToDoItem">
+      </app-to-do-item-active>
+    </ng-template>
   </li>
 </ul>

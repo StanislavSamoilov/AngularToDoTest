@@ -1,22 +1,30 @@
 .title {
-  font-size: 36px;
-  line-height: 48px;
+  width: 100%;
+  margin: 0;
+  padding: 14px 0;
+
+  font-size: 28px;
+  line-height: 36px;
   text-align: center;
+  color: rgb(255, 255, 255);
+
+  background-color: rgb(68, 194, 68);
+  box-shadow: 0 2px 5px rgba(0,0,0,.3);
 }
 
 .weather {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .to-do {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .buttons-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding: 0 30px;
 }
 
@@ -25,7 +33,7 @@
   padding: 8px 16px;
 
   color: rgb(255, 255, 255);
-  
+
   background-color: rgb(68, 194, 68);
   border: none;
   border-radius: 6px;;

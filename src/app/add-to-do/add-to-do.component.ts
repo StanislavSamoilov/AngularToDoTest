@@ -7,23 +7,28 @@ import { ToDoItem } from '../to-do-item.model';
 @Component({
   selector: 'app-add-to-do',
   templateUrl: './add-to-do.component.html',
-  styleUrls: ['./add-to-do.component.scss']
+  styleUrls: ['./add-to-do.component.scss'],
 })
 export class AddToDoComponent {
-  addToDoForm = new FormGroup({
-    title: new FormControl('', Validators.required),
-    discription: new FormControl('')
-  });
+  public toDosForm: FormGroup;
 
-  constructor(private toDoItemsService: ToDoItemsService) { }
+  constructor(private toDoItemsService: ToDoItemsService) {
+      this.toDosForm  = new FormGroup({
+        title: new FormControl('', Validators.required),
+        description: new FormControl(''),
+      });
+  }
 
-  addNewToDo(): void {
-    // how to code-style this construction ?
-    const newToDoItem = new ToDoItem( this.addToDoForm.get('title').value, 
-                                    this.addToDoForm.get('discription').value, 
-                                    new Date(),
-                                    false );
-    
+  public addNewToDo(): void {
+    const newToDoItem = new ToDoItem(
+      this.toDosForm.get('title').value,
+      this.toDosForm.get('description').value
+    );
+
     this.toDoItemsService.addToDo(newToDoItem);
+  }
+
+  public isValid(): boolean {
+    return this.toDosForm.invalid && (this.toDosForm.dirty || this.toDosForm.touched);
   }
 }

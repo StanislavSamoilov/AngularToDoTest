@@ -7,12 +7,12 @@ import { ToDoItemsService } from './to-do-items.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Angular ToDo App';
-  showAddForm = false;
+  public title = 'Angular ToDo App';
+  public showAddForm = false;
 
   constructor(private toDoItemsService: ToDoItemsService) { }
 
-  clearList() {
+  public clearList(): void {
     this.toDoItemsService.clearList();
   }
 }

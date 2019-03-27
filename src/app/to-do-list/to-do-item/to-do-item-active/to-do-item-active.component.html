@@ -1,0 +1,17 @@
+<div class="item-wrapper">
+  <div class="info-wrapper">
+    <input type="text" class="title" [formControl]="titleControl" required>
+    <textarea
+      type="text"
+      class="description"
+      [formControl]="descriptionControl">
+    </textarea>
+    <button type="button" class="button-apply" (click)="changeToDo()">Apply</button>
+  </div>
+  <button type="button" class="button-back" (click)="sendDeactivateEvent()">
+    <span class="visually-hidden">Back</span>
+  </button>
+  <button type="button" class="button-delete" (click)="deleteToDo()">
+    <span class="visually-hidden">Delete ToDo</span>
+  </button>
+</div>

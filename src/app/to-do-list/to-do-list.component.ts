@@ -8,10 +8,26 @@ import { ToDoItem } from '../to-do-item.model';
   templateUrl: './to-do-list.component.html',
   styleUrls: ['./to-do-list.component.scss']
 })
-export class ToDoListComponent {
-  constructor(private toDoItemsService: ToDoItemsService) { }
+export class ToDoListComponent{
+  public activeToDo: ToDoItem;
 
-  getToDoItems(): ToDoItem[] {
-    return this.toDoItemsService.getToDoList();
+  constructor(private toDoItemsService: ToDoItemsService) {
+    this.activeToDo = new ToDoItem('', '');
+  }
+
+  public getToDoItems(): ToDoItem[] {
+    return this.toDoItemsService.getToDoList().reverse();
+  }
+
+  public trackByIndex(index): number {
+    return index;
+  }
+
+  public makeActive(newActiveToDo: ToDoItem): void {
+    this.activeToDo = newActiveToDo;
+  }
+
+  public makePassive(makePassiveToDo: ToDoItem): void {
+    this.activeToDo = new ToDoItem('', '');
   }
 }

@@ -6,20 +6,19 @@ import { ToDoItem } from './to-do-item.model';
   providedIn: 'root'
 })
 export class ToDoItemsService {
-  getToDoList(): ToDoItem[] {
-    return JSON.parse(localStorage.getItem('toDoList')) || 
+  public getToDoList(): ToDoItem[] {
+    return JSON.parse(localStorage.getItem('toDoList')) ||
            localStorage.setItem('toDoList', JSON.stringify([]));
   }
 
-  addToDo(newItem: ToDoItem): void {
+  public addToDo(newItem: ToDoItem): void {
     const tempToDoList = this.getToDoList();
 
     tempToDoList.push(newItem);
     localStorage.setItem('toDoList', JSON.stringify(tempToDoList));
   }
 
-  // maybe add index to model ?
-  deleteToDo(itemToDelete: ToDoItem): void {
+  public deleteToDo(itemToDelete: ToDoItem): void {
     let tempToDoList = this.getToDoList();
 
     tempToDoList = tempToDoList.filter((item) => {
@@ -28,8 +27,22 @@ export class ToDoItemsService {
     localStorage.setItem('toDoList', JSON.stringify(tempToDoList));
   }
 
-  // maybe add index to model ?
-  toggleToDoStatus(toDoForChange: ToDoItem): void {
+  // split to title and discription
+  public changeToDo(targetToDo: ToDoItem): void {
+    let tempToDoList = this.getToDoList();
+
+    tempToDoList = tempToDoList.map((e) => {
+      if (e.date === targetToDo.date) {
+        e.title = targetToDo.title;
+        e.description = targetToDo.description;
+        e.date = new Date();
+      }
+      return e;
+    });
+    localStorage.setItem('toDoList', JSON.stringify(tempToDoList));
+  };
+
+  public toggleToDoStatus(toDoForChange: ToDoItem): void {
     let tempToDoList = this.getToDoList();
 
     tempToDoList = tempToDoList.map((e) => {
@@ -42,7 +55,7 @@ export class ToDoItemsService {
     localStorage.setItem('toDoList', JSON.stringify(tempToDoList));
   }
 
-  clearList(): void {
+  public clearList(): void {
     localStorage.setItem('toDoList', JSON.stringify([]));
   }
 }

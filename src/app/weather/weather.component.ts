@@ -1,39 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-// import { WeatherService } from '../weather.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { WeatherService } from '../weather.service';
+import { WeatherData } from '../weather-data';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss']
 })
-export class WeatherComponent implements OnInit {
-  private apiKey = '2ac27ee036aeee78d401fffa925fc3cd'; // 
-  // weatherData;
-  locationData;
+export class WeatherComponent implements OnInit, OnDestroy {
+  public weatherData: WeatherData;
+  private dataSub: Subscription;
 
-  constructor(
-    // private weatherService: WeatherService
-  ) { }
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit() {
-    // this.weatherData = this.weatherService.getWeather();
-    navigator.geolocation.getCurrentPosition(
-      (position): void => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${this.apiKey}`)
-          .then((responce) => {
-            return responce.json();
-          })
-          .then((data) => {
-            this.locationData = data;
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-      (error): void => { 
-        console.log(error) 
-      }
+    this.dataSub = this.weatherService.getWeather().subscribe(
+      (res) => { this.weatherData = res; },
+      (error) => { console.log(error) }
     );
   }
 
+  ngOnDestroy() {
+    this.dataSub.unsubscribe();
+  }
 }
