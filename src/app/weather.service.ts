@@ -13,18 +13,11 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
 
-  // not work
   private getLocation(): Observable<Position> {
-    return new Observable(observer => {
-      const { next, error } = observer;
-
-      try {
-        navigator.geolocation.getCurrentPosition(next, error);
-      } catch (error) {
-        error(error);
-      }
-
-      return { unsubscribe() {} };
+    return Observable.create(observer => {
+      navigator.geolocation.getCurrentPosition((pos: Position) => {
+        observer.next(pos);
+      });
     });
   }
 

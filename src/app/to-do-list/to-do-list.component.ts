@@ -6,9 +6,9 @@ import { ToDoItem } from '../to-do-item.model';
 @Component({
   selector: 'app-to-do-list',
   templateUrl: './to-do-list.component.html',
-  styleUrls: ['./to-do-list.component.scss']
+  styleUrls: ['./to-do-list.component.scss'],
 })
-export class ToDoListComponent{
+export class ToDoListComponent {
   public activeToDo: ToDoItem;
 
   constructor(private toDoItemsService: ToDoItemsService) {

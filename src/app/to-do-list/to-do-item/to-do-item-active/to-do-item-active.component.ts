@@ -7,7 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-to-do-item-active',
   templateUrl: './to-do-item-active.component.html',
-  styleUrls: ['./to-do-item-active.component.scss']
+  styleUrls: ['./to-do-item-active.component.scss'],
 })
 export class ToDoItemActiveComponent implements OnInit {
   @Input() toDoItem: ToDoItem;
@@ -17,8 +17,11 @@ export class ToDoItemActiveComponent implements OnInit {
 
   constructor(private toDoItemsService: ToDoItemsService) {}
 
-  ngOnInit() {
-    this.titleControl = new FormControl(this.toDoItem.title, Validators.required);
+  ngOnInit(): void {
+    this.titleControl = new FormControl(
+      this.toDoItem.title,
+      Validators.required
+    );
     this.descriptionControl = new FormControl(this.toDoItem.description);
   }
 

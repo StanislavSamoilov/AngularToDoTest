@@ -13,10 +13,10 @@ export class AddToDoComponent {
   public toDosForm: FormGroup;
 
   constructor(private toDoItemsService: ToDoItemsService) {
-      this.toDosForm  = new FormGroup({
-        title: new FormControl('', Validators.required),
-        description: new FormControl(''),
-      });
+    this.toDosForm = new FormGroup({
+      title: new FormControl('', Validators.required),
+      description: new FormControl(''),
+    });
   }
 
   public addNewToDo(): void {
@@ -26,9 +26,15 @@ export class AddToDoComponent {
     );
 
     this.toDoItemsService.addToDo(newToDoItem);
+    this.toDosForm.setValue({
+      title: '',
+      description: '',
+    });
   }
 
   public isValid(): boolean {
-    return this.toDosForm.invalid && (this.toDosForm.dirty || this.toDosForm.touched);
+    return (
+      this.toDosForm.invalid && (this.toDosForm.dirty || this.toDosForm.touched)
+    );
   }
 }

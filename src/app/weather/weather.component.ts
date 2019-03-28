@@ -10,18 +10,22 @@ import { Subscription } from 'rxjs';
 })
 export class WeatherComponent implements OnInit, OnDestroy {
   public weatherData: WeatherData;
-  private dataSub: Subscription;
+  private dataSub$: Subscription;
 
   constructor(private weatherService: WeatherService) {}
 
-  ngOnInit() {
-    this.dataSub = this.weatherService.getWeather().subscribe(
-      (res) => { this.weatherData = res; },
-      (error) => { console.log(error) }
+  ngOnInit(): void {
+    this.dataSub$ = this.weatherService.getWeather().subscribe(
+      res => {
+        this.weatherData = res;
+      },
+      error => {
+        console.log(error);
+      }
     );
   }
 
-  ngOnDestroy() {
-    this.dataSub.unsubscribe();
+  ngOnDestroy(): void {
+    this.dataSub$.unsubscribe();
   }
 }

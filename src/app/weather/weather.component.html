@@ -1,5 +1,7 @@
 <div class="weather-wrapper">
   <h2 class="title">Weather now: {{ weatherData?.weather[0]?.main }}</h2>
-  <span>City: {{ weatherData?.name }}</span>
-  <span>Temp: {{ weatherData?.main?.temp | kelToCel }} °C</span>
+  <div class="info-wrapper">
+    <span>City: {{ weatherData?.name }}</span>
+    <span>Temp: {{ weatherData?.main?.temp | kelToCel }} °C</span>
+  </div>
 </div>
