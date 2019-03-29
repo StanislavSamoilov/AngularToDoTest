@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class KelToCelPipe implements PipeTransform {
   transform(kel: number): number {
-    return +(kel - 273.15).toFixed(1);
+    return kel ? +(kel - 273.15).toFixed(1) : 0;
   }
 }

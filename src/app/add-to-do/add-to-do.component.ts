@@ -26,10 +26,7 @@ export class AddToDoComponent {
     );
 
     this.toDoItemsService.addToDo(newToDoItem);
-    this.toDosForm.setValue({
-      title: '',
-      description: '',
-    });
+    this.toDosForm.reset();
   }
 
   public isValid(): boolean {
